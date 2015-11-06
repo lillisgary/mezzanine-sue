@@ -26,7 +26,7 @@
 {% else %}
   <link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
 {% endif %}
-<link rel="stylesheet" href="{% static "css/carousel.css" %}">
+<link rel="stylesheet" href="{% static "css/carousel-new.css" %}">
 <link rel="stylesheet" href="{% static "css/addon.css" %}">
 
 {% if LANGUAGE_BIDI %}
@@ -142,7 +142,16 @@ $(document).ready(function(){
 </div>
 </div>
 
-
+<script type="text/javascript">
+var x = document.querySelectorAll(".youtube");
+     var i;
+     for (i = 0; i < x.length;
+     i++) {
+     innerValue = x[i].innerHTML.trim()
+     x[i].innerHTML = "<iframe " + innerValue + "></iframe>";
+     }
+            
+</script>
 
 <footer style="margin-bottom: 0px;" class="panel panel-default">
 <div class="container">

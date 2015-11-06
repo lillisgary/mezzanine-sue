@@ -13,18 +13,16 @@
                   <div class="header">    	            	
                     <div class="row">
                     
-                      <div class="col-md-4 pull-left">
-                        {% if page.homepage.logo %}
-                          <div class="logo"><a href="/"><img src="{{ MEDIA_URL }}{{ page.homepage.logo }}" alt="{{ settings.SITE_TITLE }}" /></a></div>
-                        {% else %}
-                          <div class="logo"><a href="/">{{ settings.SITE_TITLE }}</a></div>
-                        {% endif %}                                
-                        <div><h5>{{ settings.SITE_TAGLINE }}</h5></div>                        
-                      </div>
-                                                 
+                      {% if page.homepage.logo %}
+                        <div class="pull-left text-center">
+                          <div><a href="/"><img src="{{ MEDIA_URL }}{{ page.homepage.logo }}" class="img-responsive" alt="{{ settings.SITE_TITLE }}" /></a></div>
+                          <div><h5>{{ settings.SITE_TAGLINE }}</h5></div>                                                                               
+                        </div>
+                      {% endif %}
+                      
                     </div>                                                       
                   </div>
-    <!--//header-->    
+    <!--//header-->   
      
     <!--page_container-->
                 
@@ -32,25 +30,13 @@
         {% if page.homepage.slides.all %}
         <div class="bs-example">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    	<!-- Carousel indicators -->
-        <ol class="carousel-indicators">
-        {% for slide in page.homepage.slides.all %}
-          {% if forloop.counter == 1 %}
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          {% else %}
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-          {% endif %}
-        {% endfor %}  
-        </ol>
-      <!-- //Carousel indicators -->
-         
-        <!-- Carousel items -->
+        
+        <!-- Carousel items -->        
         <div class="carousel-inner">
         {% for slide in page.homepage.slides.all %}
             {% if forloop.counter == 1 %}
             <div class="active item">
-                <img src="{{ MEDIA_URL }}{% thumbnail slide.image 1200 360 %}" class="img-responsive" alt="">
-                <h2>Slide 1</h2>              
+                <img src="{{ MEDIA_URL }}{% thumbnail slide.image 1200 360 %}" class="img-responsive center-block col-xs-12" alt="">                             
          		 <div class="carousel-caption">
                   <h3>{{ slide.main_label|title }}</h3>
                   <p>{{ slide.sub_label }}</p>
@@ -58,8 +44,7 @@
             </div>
             {% else %}
             <div class="item">
-                <img src="{{ MEDIA_URL }}{% thumbnail slide.image 1200 360 %}" alt="">
-                <h2>Slide 1</h2>                
+                <img src="{{ MEDIA_URL }}{% thumbnail slide.image 1200 360 %}" class="img-responsive center-block col-xs-12" alt="">                            
          		 <div class="carousel-caption">
                   <h3>{{ slide.main_label|title }}</h3>
                   <p>{{ slide.sub_label }}</p>
@@ -68,13 +53,16 @@
             {% endif %}
         {% endfor %}
         </div>
-        <!-- Carousel nav -->
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+        
+        <!-- carousel nav -->
+        <a class="carousel-controls left" href="#myCarousel" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">
+        <a class="carousel-controls right" href="#myCarousel" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
+       </a>
+       <!-- //carousel nav -->
+       
     </div>
 </div>
       {% endif %}
@@ -164,7 +152,13 @@
           
         {% endif %}
         <!--//temporary portfolio-->
-        
+
+        <!-- Main Content -->
+       <div>  
+       {{ page.homepage.content|richtext_filters|safe }}
+       </div>
+        <!-- //Main Content --><br>
+
         <!-- selected portfolio -->
         <div class="container"> <!--random 4-->
         {% if page.homepage.porter %}
@@ -194,12 +188,6 @@
         {% endif %}
         </div>
         <!-- //selected portfolio -->
-        
-        <!-- Main Content -->
-       <div class="text-justify">  
-       {{ page.homepage.content|richtext_filters|safe }}
-       </div>
-        <!-- //Main Content --><br>
         
         <!--Shop Products-->        
         {% if products %}
