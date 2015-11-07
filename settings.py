@@ -370,8 +370,8 @@ else:
 # EMAIL SETTINGS  #
 ###################
 
-EMAIL_HOST_USER = 'lillisgary@gmail.com'
-EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mezzaninesue@gmail.com'
+EMAIL_USE_TLS = True 
 EMAIL_HOST = 'smtp.mandrillapp.com'
-EMAIL_HOST_PASSWORD = '7spJs4LYJFYZMCxSZ8VIVA'
+EMAIL_HOST_PASSWORD = 'fEB1Iv0AdCZIWQGL9o5zfA'
 EMAIL_PORT = 587
