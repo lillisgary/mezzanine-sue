@@ -21,11 +21,7 @@
 
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 
-{% if settings.THEME_SKINS %}
-  <link rel="stylesheet" href="{% static "css/"|add:settings.THEME_SKINS %}">
-{% else %}
-  <link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
-{% endif %}
+
 <link rel="stylesheet" href="{% static "css/carousel-new.css" %}">
 <link rel="stylesheet" href="{% static "css/addon.css" %}">
 
@@ -66,7 +62,11 @@ $(document).ready(function(){
 <script src="{% static "js/html5shiv.js" %}"></script>
 <script src="{% static "js/respond.min.js" %}"></script>
 <![endif]-->
-
+{% if settings.THEME_SKINS %}
+  <link rel="stylesheet" href="{% static "css/"|add:settings.THEME_SKINS %}">
+{% else %}
+  <link rel="stylesheet" href="{% static "css/bootstrap_cyborg_dark.css" %}">
+{% endif %}
 {% block extra_head %}{% endblock %}
 </head>
 
